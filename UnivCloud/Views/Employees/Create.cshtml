@@ -1,0 +1,107 @@
+﻿@model UnivCloud_Datos.BaseDatos.Employee
+
+@{
+    bool? State = ViewBag.States;
+}
+@using (Html.BeginForm("Create", "Employees", FormMethod.Post, new { @autocomplete = "off" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Form_Standard_Univ " id="Body">
+        <h4 class="text-center">Ingreso de Empleados</h4>
+        <hr />
+        <div class="form-group col-md-6 m-auto">
+            @Html.LabelFor(model => model.Code_Employee, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <diV>
+                @Html.EditorFor(model => model.Code_Employee, new { htmlAttributes = new { @class = "form-control col-md-12 cedula" } })
+            </diV>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <diV>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                </diV>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <div>
+                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Birth_Date, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <div>
+                    @Html.EditorFor(model => model.Birth_Date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <div class="col-md-12">
+                    <select class="form-control" name="Gender" id="Gender">
+                        <option value="Indefinido">Indefinido</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control telefono" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.DropDownList("Position", (SelectList)ViewBag.Positions, "Selecciona un cargo", new { @class = "form-control" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Admission_Date, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12">
+                <!--MASKARA PARA FECHAS-->
+                @Html.EditorFor(model => model.Admission_Date, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.Admission_Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.TextAreaFor(model => model.Address, 3, 20, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                <!--Subir archivo y que tome la ruta-->
+                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12 row">
+                <a href="@Url.Action("Consult", "Employees")" class="btn btn-info offset-1 col-md-3"><i class="fas fa-table"></i> Consultar</a>
+                <input type="submit" value="Crear" id="Bod" class="btn btn-dark w-100 m-auto col-md-3 offset-1" />
+            </div>
+        </div>
+    </div>
+}
+@{Html.RenderPartial("_State", new StateValid { States = State });}

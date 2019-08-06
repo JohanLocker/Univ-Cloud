@@ -1,0 +1,64 @@
+﻿@model UnivCloud_Datos.BaseDatos.Subject
+
+@{
+    bool? Estado = ViewBag.Estado;
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="Form_Standard_Univ " id="Body">
+        <h4 class="text-center">Edicion de asignaturas</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code_Subject, htmlAttributes: new { @class = "col-md-12 col-form-label-sm Color-Black" })
+            <div class="col-md-12 row">
+                @Html.EditorFor(model => model.Code_Subject, new { htmlAttributes = new { @class = "form-control col-md-6 Input-Estandar", @placeholder = "Codigo de Asignatura", @readonly =  "readonly" } })
+                @Html.ValidationMessageFor(model => model.Code_Subject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nombre" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @placeholder = "Descripcion" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+            <div class="col-md-12">
+                @Html.DropDownList("Grade", (SelectList)ViewBag.Grades,"Seleccione un grado", new { @class = "form-control " })
+                @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row container col-md-8">
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Credits, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                <div>
+                    @Html.EditorFor(model => model.Credits, new { htmlAttributes = new { @class = "form-control", @placeholder = "Creditos" } })
+                    @Html.ValidationMessageFor(model => model.Credits, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 row">
+                <a href="@Url.Action("Consult", "Subjects")" class="btn btn-info offset-1 col-md-3"><i class="fas fa-table"></i> Consultar</a>
+                <input type="submit" value="Actualizar" id="Bod" class="btn btn-dark w-100 m-auto col-md-3 offset-1" />
+            </div>
+        </div>
+    </div>
+}
+<div class="Body" id="Body"></div>

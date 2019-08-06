@@ -1,0 +1,1628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CloudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Area" />
+          </Key>
+          <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="Number_Classroom" />
+          </Key>
+          <Property Name="Number_Classroom" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="Section" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID_Departament" />
+          </Key>
+          <Property Name="ID_Departament" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="Area" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+          </Key>
+          <Property Name="Code_Employee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Birth_Date" Type="date" />
+          <Property Name="Admission_Date" Type="date" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="Code_Grade" />
+          </Key>
+          <Property Name="Code_Grade" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="ID_Notes" />
+          </Key>
+          <Property Name="ID_Notes" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Student" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="varchar" MaxLength="20" />
+          <Property Name="Partial_1" Type="int" />
+          <Property Name="Partial_2" Type="int" />
+          <Property Name="Partial_3" Type="int" />
+          <Property Name="Partial_4" Type="int" />
+          <Property Name="Exam_General" Type="int" />
+          <Property Name="Exam_Completive" Type="int" />
+          <Property Name="Exam_Extraordinary" Type="int" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID_Position" />
+          </Key>
+          <Property Name="ID_Position" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Department" Type="varchar" MaxLength="20" />
+          <Property Name="Salary" Type="money" />
+        </EntityType>
+        <EntityType Name="Privileges">
+          <Key>
+            <PropertyRef Name="ID_Privileges" />
+          </Key>
+          <Property Name="ID_Privileges" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Professor_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Professor" Type="varchar" MaxLength="20" />
+          <Property Name="Subject" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Record_Maintenance">
+          <Key>
+            <PropertyRef Name="ID_Record_Maintenance" />
+          </Key>
+          <Property Name="ID_Record_Maintenance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserAdmin" Type="varchar" MaxLength="50" />
+          <Property Name="Action" Type="varchar" MaxLength="100" />
+          <Property Name="date" Type="date" />
+          <Property Name="time" Type="time" Precision="4" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Code_Schedule" />
+          </Key>
+          <Property Name="Code_Schedule" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="HourStart" Type="time" Precision="1" />
+          <Property Name="HourEnd" Type="time" Precision="1" />
+          <Property Name="Day" Type="varchar" MaxLength="40" />
+          <Property Name="Subject" Type="varchar" MaxLength="20" />
+          <Property Name="Classroom" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Schedule_Professor">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+          </Key>
+          <Property Name="ID_Schedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Schedule" Type="varchar" MaxLength="80" />
+          <Property Name="Professor" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Enrollment" />
+          </Key>
+          <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Birth_Date" Type="date" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="20" />
+          <Property Name="Classroom" Type="varchar" MaxLength="20" />
+          <Property Name="Nacionality" Type="varchar" MaxLength="50" />
+          <Property Name="Tutor" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Image" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Code_Subject" />
+          </Key>
+          <Property Name="Code_Subject" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade" Type="int" />
+          <Property Name="Credits" Type="int" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birth_Date" Type="date" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Nacionality" Type="varchar" MaxLength="50" />
+          <Property Name="Occupation" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Privilege" Type="int" Nullable="false" />
+          <Property Name="Employee" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.ClassRoomsView' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ClassRoomsView">
+          <Key>
+            <PropertyRef Name="Classroom" />
+            <PropertyRef Name="Number_Classroom" />
+          </Key>
+          <Property Name="Classroom" Type="varchar" MaxLength="81" Nullable="false" />
+          <Property Name="Number_Classroom" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.Configuration' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Image" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.ConsultUsers' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ConsultUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Mail" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Code_Employee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="121" Nullable="false" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar" MaxLength="300" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'Cloud.dbo.ControlPanel' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="ControlPanel">
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="Image" Type="varchar" MaxLength="300" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.EmployeProfessor' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="EmployeProfessor">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+          </Key>
+          <Property Name="Code_Employee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.PanelUsers' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="PanelUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="Image" Type="varchar" MaxLength="300" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.Professor_Subjects_Assigned' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Professor_Subjects_Assigned">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="Subject" />
+          </Key>
+          <Property Name="Code_Employee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Grade" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.Schedules_Assigneds' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Schedules_Assigneds">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+            <PropertyRef Name="Code_Schedule" />
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="Subject" />
+            <PropertyRef Name="Classroom_Assigned" />
+          </Key>
+          <Property Name="ID_Schedule" Type="int" Nullable="false" />
+          <Property Name="Code_Schedule" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="HourStart" Type="time" Precision="1" />
+          <Property Name="HourEnd" Type="time" Precision="1" />
+          <Property Name="Day" Type="varchar" MaxLength="40" />
+          <Property Name="Name" Type="varchar" MaxLength="60" />
+          <Property Name="Code_Employee" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Classroom_Assigned" Type="varchar" MaxLength="81" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cloud.dbo.StudentsClassrooms' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="StudentsClassrooms">
+          <Key>
+            <PropertyRef Name="Aula" />
+            <PropertyRef Name="Enrollment" />
+          </Key>
+          <Property Name="Aula" Type="varchar" MaxLength="81" Nullable="false" />
+          <Property Name="NameStudent" Type="varchar" MaxLength="60" />
+          <Property Name="LastName" Type="varchar" MaxLength="60" />
+          <Property Name="Enrollment" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Departament_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID_Position" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Classroom">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Code_Grade" />
+            </Principal>
+            <Dependent Role="Classroom">
+              <PropertyRef Name="Grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Subject">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Code_Grade" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="Grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Enrollment" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_Departament">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Departament" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Professor">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Professor_Subject" Type="Self.Professor_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Professor_Subject">
+              <PropertyRef Name="Professor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Record_Maintenance" Type="Self.Record_Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Record_Maintenance">
+              <PropertyRef Name="UserAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_ClassRoom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="Number_Classroom" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Classroom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Professor">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Schedule_Professor" Type="Self.Schedule_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Schedule_Professor">
+              <PropertyRef Name="Professor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule_Professor" Type="Self.Schedule_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Code_Schedule" />
+            </Principal>
+            <Dependent Role="Schedule_Professor">
+              <PropertyRef Name="Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Classroom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="Number_Classroom" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Classroom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Tutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Professor">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Professor_Subject" Type="Self.Professor_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Professor_Subject">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Schedule">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Privileges">
+          <End Role="Privileges" Type="Self.Privileges" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privileges">
+              <PropertyRef Name="ID_Privileges" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Privilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="UpdateConfiguration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Code" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Mail" Type="varchar" Mode="In" />
+          <Parameter Name="Tel" Type="varchar" Mode="In" />
+          <Parameter Name="Image" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="CloudModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classroom" EntityType="Self.Classroom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privileges" EntityType="Self.Privileges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Professor_Subject" EntityType="Self.Professor_Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record_Maintenance" EntityType="Self.Record_Maintenance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule_Professor" EntityType="Self.Schedule_Professor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassRoomsView" EntityType="Self.ClassRoomsView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ClassRoomsView].[Classroom] AS [Classroom], 
+    [ClassRoomsView].[Number_Classroom] AS [Number_Classroom]
+    FROM [dbo].[ClassRoomsView] AS [ClassRoomsView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Configuration].[Username] AS [Username], 
+    [Configuration].[Password] AS [Password], 
+    [Configuration].[Address] AS [Address], 
+    [Configuration].[Mail] AS [Mail], 
+    [Configuration].[Telephone] AS [Telephone], 
+    [Configuration].[Image] AS [Image]
+    FROM [dbo].[Configuration] AS [Configuration]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ConsultUsers" EntityType="Self.ConsultUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ConsultUsers].[Username] AS [Username], 
+    [ConsultUsers].[Description] AS [Description], 
+    [ConsultUsers].[Code_Employee] AS [Code_Employee], 
+    [ConsultUsers].[FullName] AS [FullName], 
+    [ConsultUsers].[Mail] AS [Mail], 
+    [ConsultUsers].[Position] AS [Position], 
+    [ConsultUsers].[Image] AS [Image], 
+    [ConsultUsers].[Status] AS [Status]
+    FROM [dbo].[ConsultUsers] AS [ConsultUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EmployeProfessor" EntityType="Self.EmployeProfessor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmployeProfessor].[Code_Employee] AS [Code_Employee], 
+    [EmployeProfessor].[Name] AS [Name], 
+    [EmployeProfessor].[LastName] AS [LastName], 
+    [EmployeProfessor].[Position] AS [Position], 
+    [EmployeProfessor].[Department] AS [Department]
+    FROM [dbo].[EmployeProfessor] AS [EmployeProfessor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PanelUsers" EntityType="Self.PanelUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PanelUsers].[Position] AS [Position], 
+    [PanelUsers].[Name] AS [Name], 
+    [PanelUsers].[Image] AS [Image], 
+    [PanelUsers].[Description] AS [Description], 
+    [PanelUsers].[Username] AS [Username]
+    FROM [dbo].[PanelUsers] AS [PanelUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Professor_Subjects_Assigned" EntityType="Self.Professor_Subjects_Assigned" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Professor_Subjects_Assigned].[Code_Employee] AS [Code_Employee], 
+    [Professor_Subjects_Assigned].[Name] AS [Name], 
+    [Professor_Subjects_Assigned].[LastName] AS [LastName], 
+    [Professor_Subjects_Assigned].[Position] AS [Position], 
+    [Professor_Subjects_Assigned].[Subject] AS [Subject], 
+    [Professor_Subjects_Assigned].[Grade] AS [Grade]
+    FROM [dbo].[Professor_Subjects_Assigned] AS [Professor_Subjects_Assigned]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Schedules_Assigneds" EntityType="Self.Schedules_Assigneds" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Schedules_Assigneds].[ID_Schedule] AS [ID_Schedule], 
+    [Schedules_Assigneds].[Code_Schedule] AS [Code_Schedule], 
+    [Schedules_Assigneds].[HourStart] AS [HourStart], 
+    [Schedules_Assigneds].[HourEnd] AS [HourEnd], 
+    [Schedules_Assigneds].[Day] AS [Day], 
+    [Schedules_Assigneds].[Name] AS [Name], 
+    [Schedules_Assigneds].[Code_Employee] AS [Code_Employee], 
+    [Schedules_Assigneds].[LastName] AS [LastName], 
+    [Schedules_Assigneds].[Subject] AS [Subject], 
+    [Schedules_Assigneds].[Classroom_Assigned] AS [Classroom_Assigned]
+    FROM [dbo].[Schedules_Assigneds] AS [Schedules_Assigneds]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentsClassrooms" EntityType="Self.StudentsClassrooms" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentsClassrooms].[Aula] AS [Aula], 
+    [StudentsClassrooms].[NameStudent] AS [NameStudent], 
+    [StudentsClassrooms].[LastName] AS [LastName], 
+    [StudentsClassrooms].[Enrollment] AS [Enrollment]
+    FROM [dbo].[StudentsClassrooms] AS [StudentsClassrooms]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Departament_Area" Association="Self.FK_Departament_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Classroom" Association="Self.FK_Grade_Classroom">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Classroom" EntitySet="Classroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Subject" Association="Self.FK_Grade_Subject">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Students" Association="Self.FK_Notes_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Subject" Association="Self.FK_Notes_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_Departament" Association="Self.FK_Position_Departament">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Position" EntitySet="Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Professor" Association="Self.FK_Professor">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Professor_Subject" EntitySet="Professor_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_User" Association="Self.FK_Record_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Record_Maintenance" EntitySet="Record_Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_ClassRoom" Association="Self.FK_Schedule_ClassRoom">
+            <End Role="Classroom" EntitySet="Classroom" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Professor" Association="Self.FK_Schedule_Professor">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Schedule_Professor" EntitySet="Schedule_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Schedule" Association="Self.FK_Schedule_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Schedule_Professor" EntitySet="Schedule_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classroom" Association="Self.FK_Students_Classroom">
+            <End Role="Classroom" EntitySet="Classroom" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Tutor" Association="Self.FK_Students_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Professor" Association="Self.FK_Subject_Professor">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Professor_Subject" EntitySet="Professor_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Schedule" Association="Self.FK_Subject_Schedule">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Employee" Association="Self.FK_User_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Privileges" Association="Self.FK_User_Privileges">
+            <End Role="Privileges" EntitySet="Privileges" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CloudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Area1" />
+          </Key>
+          <Property Name="Area1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Departament_Area" FromRole="Area" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="Number_Classroom" />
+          </Key>
+          <Property Name="Number_Classroom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grade" Type="Int32" />
+          <Property Name="Section" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grade_Classroom" FromRole="Classroom" ToRole="Grades" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_Schedule_ClassRoom" FromRole="Classroom" ToRole="Schedule" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Classroom" FromRole="Classroom" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID_Departament" />
+          </Key>
+          <Property Name="ID_Departament" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Department1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Area1" Relationship="Self.FK_Departament_Area" FromRole="Department" ToRole="Area" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_Position_Departament" FromRole="Department" ToRole="Position" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+          </Key>
+          <Property Name="Code_Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Birth_Date" Type="DateTime" Precision="0" />
+          <Property Name="Admission_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Position1" Relationship="Self.FK_Employee_Position" FromRole="Employee" ToRole="Position" />
+          <NavigationProperty Name="Professor_Subject" Relationship="Self.FK_Professor" FromRole="Employee" ToRole="Professor_Subject" />
+          <NavigationProperty Name="Schedule_Professor" Relationship="Self.FK_Schedule_Professor" FromRole="Employee" ToRole="Schedule_Professor" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Employee" FromRole="Employee" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="Code_Grade" />
+          </Key>
+          <Property Name="Code_Grade" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classroom" Relationship="Self.FK_Grade_Classroom" FromRole="Grades" ToRole="Classroom" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Grade_Subject" FromRole="Grades" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Notes">
+          <Key>
+            <PropertyRef Name="ID_Notes" />
+          </Key>
+          <Property Name="ID_Notes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Student" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Partial_1" Type="Int32" />
+          <Property Name="Partial_2" Type="Int32" />
+          <Property Name="Partial_3" Type="Int32" />
+          <Property Name="Partial_4" Type="Int32" />
+          <Property Name="Exam_General" Type="Int32" />
+          <Property Name="Exam_Completive" Type="Int32" />
+          <Property Name="Exam_Extraordinary" Type="Int32" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Notes_Students" FromRole="Notes" ToRole="Students" />
+          <NavigationProperty Name="Subject1" Relationship="Self.FK_Notes_Subject" FromRole="Notes" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="ID_Position" />
+          </Key>
+          <Property Name="ID_Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Position1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Salary" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Department1" Relationship="Self.FK_Position_Departament" FromRole="Position" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Position" FromRole="Position" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Privileges">
+          <Key>
+            <PropertyRef Name="ID_Privileges" />
+          </Key>
+          <Property Name="ID_Privileges" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Privileges" FromRole="Privileges" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Professor_Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Professor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Professor" FromRole="Professor_Subject" ToRole="Employee" />
+          <NavigationProperty Name="Subject1" Relationship="Self.FK_Subject_Professor" FromRole="Professor_Subject" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Record_Maintenance">
+          <Key>
+            <PropertyRef Name="ID_Record_Maintenance" />
+          </Key>
+          <Property Name="ID_Record_Maintenance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="time" Type="Time" Precision="4" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Record_User" FromRole="Record_Maintenance" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="Code_Schedule" />
+          </Key>
+          <Property Name="Code_Schedule" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HourStart" Type="Time" Precision="1" />
+          <Property Name="HourEnd" Type="Time" Precision="1" />
+          <Property Name="Day" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Classroom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classroom1" Relationship="Self.FK_Schedule_ClassRoom" FromRole="Schedule" ToRole="Classroom" />
+          <NavigationProperty Name="Schedule_Professor" Relationship="Self.FK_Schedule_Schedule" FromRole="Schedule" ToRole="Schedule_Professor" />
+          <NavigationProperty Name="Subject1" Relationship="Self.FK_Subject_Schedule" FromRole="Schedule" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Schedule_Professor">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+          </Key>
+          <Property Name="ID_Schedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Schedule" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Professor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Schedule_Professor" FromRole="Schedule_Professor" ToRole="Employee" />
+          <NavigationProperty Name="Schedule1" Relationship="Self.FK_Schedule_Schedule" FromRole="Schedule_Professor" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="Enrollment" />
+          </Key>
+          <Property Name="Enrollment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Classroom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nacionality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tutor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Classroom1" Relationship="Self.FK_Students_Classroom" FromRole="Students" ToRole="Classroom" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_Students" FromRole="Students" ToRole="Notes" />
+          <NavigationProperty Name="Tutor1" Relationship="Self.FK_Students_Tutor" FromRole="Students" ToRole="Tutor" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Code_Subject" />
+          </Key>
+          <Property Name="Code_Subject" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grade" Type="Int32" />
+          <Property Name="Credits" Type="Int32" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grade_Subject" FromRole="Subject" ToRole="Grades" />
+          <NavigationProperty Name="Notes" Relationship="Self.FK_Notes_Subject" FromRole="Subject" ToRole="Notes" />
+          <NavigationProperty Name="Professor_Subject" Relationship="Self.FK_Subject_Professor" FromRole="Subject" ToRole="Professor_Subject" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_Subject_Schedule" FromRole="Subject" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Birth_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nacionality" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Students_Tutor" FromRole="Tutor" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Privilege" Type="Int32" Nullable="false" />
+          <Property Name="Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Employee1" Relationship="Self.FK_User_Employee" FromRole="Users" ToRole="Employee" />
+          <NavigationProperty Name="Privileges" Relationship="Self.FK_User_Privileges" FromRole="Users" ToRole="Privileges" />
+          <NavigationProperty Name="Record_Maintenance" Relationship="Self.FK_Record_User" FromRole="Users" ToRole="Record_Maintenance" />
+        </EntityType>
+        <EntityType Name="ClassRoomsView">
+          <Key>
+            <PropertyRef Name="Classroom" />
+            <PropertyRef Name="Number_Classroom" />
+          </Key>
+          <Property Name="Classroom" Type="String" MaxLength="81" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Number_Classroom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Mail" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ConsultUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Mail" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="121" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmployeProfessor">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+          </Key>
+          <Property Name="Code_Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PanelUsers">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Professor_Subjects_Assigned">
+          <Key>
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="Subject" />
+          </Key>
+          <Property Name="Code_Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Schedules_Assigneds">
+          <Key>
+            <PropertyRef Name="ID_Schedule" />
+            <PropertyRef Name="Code_Schedule" />
+            <PropertyRef Name="Code_Employee" />
+            <PropertyRef Name="Subject" />
+            <PropertyRef Name="Classroom_Assigned" />
+          </Key>
+          <Property Name="ID_Schedule" Type="Int32" Nullable="false" />
+          <Property Name="Code_Schedule" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HourStart" Type="Time" Precision="1" />
+          <Property Name="HourEnd" Type="Time" Precision="1" />
+          <Property Name="Day" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Employee" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Classroom_Assigned" Type="String" MaxLength="81" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentsClassrooms">
+          <Key>
+            <PropertyRef Name="Aula" />
+            <PropertyRef Name="Enrollment" />
+          </Key>
+          <Property Name="Aula" Type="String" MaxLength="81" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NameStudent" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Enrollment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Departament_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Area1" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Classroom">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Code_Grade" />
+            </Principal>
+            <Dependent Role="Classroom">
+              <PropertyRef Name="Grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_ClassRoom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="Number_Classroom" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Classroom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Classroom">
+          <End Role="Classroom" Type="Self.Classroom" Multiplicity="0..1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Classroom">
+              <PropertyRef Name="Number_Classroom" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Classroom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Position_Departament">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Departament" />
+            </Principal>
+            <Dependent Role="Position">
+              <PropertyRef Name="Department" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="ID_Position" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="Position" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Professor">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Professor_Subject" Type="Self.Professor_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Professor_Subject">
+              <PropertyRef Name="Professor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Professor">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Schedule_Professor" Type="Self.Schedule_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Schedule_Professor">
+              <PropertyRef Name="Professor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Code_Employee" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grade_Subject">
+          <End Role="Grades" Type="Self.Grades" Multiplicity="0..1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Grades">
+              <PropertyRef Name="Code_Grade" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="Grade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="Enrollment" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Student" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notes_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Notes" Type="Self.Notes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Notes">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Privileges">
+          <End Role="Privileges" Type="Self.Privileges" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privileges">
+              <PropertyRef Name="ID_Privileges" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Privilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Professor">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Professor_Subject" Type="Self.Professor_Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Professor_Subject">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Record_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Record_Maintenance" Type="Self.Record_Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Record_Maintenance">
+              <PropertyRef Name="UserAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Schedule_Professor" Type="Self.Schedule_Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="Code_Schedule" />
+            </Principal>
+            <Dependent Role="Schedule_Professor">
+              <PropertyRef Name="Schedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Schedule">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Code_Subject" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="Subject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Students_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Students" Type="Self.Students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Students">
+              <PropertyRef Name="Tutor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CloudBD" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Classroom" EntityType="Self.Classroom" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" />
+          <EntitySet Name="Notes" EntityType="Self.Notes" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
+          <EntitySet Name="Privileges" EntityType="Self.Privileges" />
+          <EntitySet Name="Professor_Subject" EntityType="Self.Professor_Subject" />
+          <EntitySet Name="Record_Maintenance" EntityType="Self.Record_Maintenance" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+          <EntitySet Name="Schedule_Professor" EntityType="Self.Schedule_Professor" />
+          <EntitySet Name="Students" EntityType="Self.Students" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="Tutor" EntityType="Self.Tutor" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="ClassRoomsView" EntityType="Self.ClassRoomsView" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" />
+          <EntitySet Name="ConsultUsers" EntityType="Self.ConsultUsers" />
+          <EntitySet Name="EmployeProfessor" EntityType="Self.EmployeProfessor" />
+          <EntitySet Name="PanelUsers" EntityType="Self.PanelUsers" />
+          <EntitySet Name="Professor_Subjects_Assigned" EntityType="Self.Professor_Subjects_Assigned" />
+          <EntitySet Name="Schedules_Assigneds" EntityType="Self.Schedules_Assigneds" />
+          <EntitySet Name="StudentsClassrooms" EntityType="Self.StudentsClassrooms" />
+          <AssociationSet Name="FK_Departament_Area" Association="Self.FK_Departament_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Classroom" Association="Self.FK_Grade_Classroom">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Classroom" EntitySet="Classroom" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_ClassRoom" Association="Self.FK_Schedule_ClassRoom">
+            <End Role="Classroom" EntitySet="Classroom" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Classroom" Association="Self.FK_Students_Classroom">
+            <End Role="Classroom" EntitySet="Classroom" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Position_Departament" Association="Self.FK_Position_Departament">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Position" EntitySet="Position" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Position" Association="Self.FK_Employee_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Professor" Association="Self.FK_Professor">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Professor_Subject" EntitySet="Professor_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Professor" Association="Self.FK_Schedule_Professor">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Schedule_Professor" EntitySet="Schedule_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Employee" Association="Self.FK_User_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grade_Subject" Association="Self.FK_Grade_Subject">
+            <End Role="Grades" EntitySet="Grades" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Students" Association="Self.FK_Notes_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notes_Subject" Association="Self.FK_Notes_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Notes" EntitySet="Notes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Privileges" Association="Self.FK_User_Privileges">
+            <End Role="Privileges" EntitySet="Privileges" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Professor" Association="Self.FK_Subject_Professor">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Professor_Subject" EntitySet="Professor_Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Record_User" Association="Self.FK_Record_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Record_Maintenance" EntitySet="Record_Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Schedule" Association="Self.FK_Schedule_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Schedule_Professor" EntitySet="Schedule_Professor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Schedule" Association="Self.FK_Subject_Schedule">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Students_Tutor" Association="Self.FK_Students_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="Students" EntitySet="Students" />
+          </AssociationSet>
+          <FunctionImport Name="UpdateConfiguration">
+            <Parameter Name="Code" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Mail" Mode="In" Type="String" />
+            <Parameter Name="Tel" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CloudModelStoreContainer" CdmEntityContainer="CloudBD">
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="CloudModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Area1" ColumnName="Area" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classroom">
+            <EntityTypeMapping TypeName="CloudModel.Classroom">
+              <MappingFragment StoreEntitySet="Classroom">
+                <ScalarProperty Name="Number_Classroom" ColumnName="Number_Classroom" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="CloudModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID_Departament" ColumnName="ID_Departament" />
+                <ScalarProperty Name="Department1" ColumnName="Department" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="CloudModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Code_Employee" ColumnName="Code_Employee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+                <ScalarProperty Name="Admission_Date" ColumnName="Admission_Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="CloudModel.Grades">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="Code_Grade" ColumnName="Code_Grade" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notes">
+            <EntityTypeMapping TypeName="CloudModel.Notes">
+              <MappingFragment StoreEntitySet="Notes">
+                <ScalarProperty Name="ID_Notes" ColumnName="ID_Notes" />
+                <ScalarProperty Name="Student" ColumnName="Student" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Partial_1" ColumnName="Partial_1" />
+                <ScalarProperty Name="Partial_2" ColumnName="Partial_2" />
+                <ScalarProperty Name="Partial_3" ColumnName="Partial_3" />
+                <ScalarProperty Name="Partial_4" ColumnName="Partial_4" />
+                <ScalarProperty Name="Exam_General" ColumnName="Exam_General" />
+                <ScalarProperty Name="Exam_Completive" ColumnName="Exam_Completive" />
+                <ScalarProperty Name="Exam_Extraordinary" ColumnName="Exam_Extraordinary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="CloudModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="ID_Position" ColumnName="ID_Position" />
+                <ScalarProperty Name="Position1" ColumnName="Position" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privileges">
+            <EntityTypeMapping TypeName="CloudModel.Privileges">
+              <MappingFragment StoreEntitySet="Privileges">
+                <ScalarProperty Name="ID_Privileges" ColumnName="ID_Privileges" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professor_Subject">
+            <EntityTypeMapping TypeName="CloudModel.Professor_Subject">
+              <MappingFragment StoreEntitySet="Professor_Subject">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Professor" ColumnName="Professor" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Record_Maintenance">
+            <EntityTypeMapping TypeName="CloudModel.Record_Maintenance">
+              <MappingFragment StoreEntitySet="Record_Maintenance">
+                <ScalarProperty Name="ID_Record_Maintenance" ColumnName="ID_Record_Maintenance" />
+                <ScalarProperty Name="UserAdmin" ColumnName="UserAdmin" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="CloudModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="Code_Schedule" ColumnName="Code_Schedule" />
+                <ScalarProperty Name="HourStart" ColumnName="HourStart" />
+                <ScalarProperty Name="HourEnd" ColumnName="HourEnd" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule_Professor">
+            <EntityTypeMapping TypeName="CloudModel.Schedule_Professor">
+              <MappingFragment StoreEntitySet="Schedule_Professor">
+                <ScalarProperty Name="ID_Schedule" ColumnName="ID_Schedule" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="Professor" ColumnName="Professor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CloudModel.Students">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+                <ScalarProperty Name="Nacionality" ColumnName="Nacionality" />
+                <ScalarProperty Name="Tutor" ColumnName="Tutor" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="CloudModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="Code_Subject" ColumnName="Code_Subject" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutor">
+            <EntityTypeMapping TypeName="CloudModel.Tutor">
+              <MappingFragment StoreEntitySet="Tutor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Birth_Date" ColumnName="Birth_Date" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Nacionality" ColumnName="Nacionality" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CloudModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+                <ScalarProperty Name="Employee" ColumnName="Employee" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassRoomsView">
+            <EntityTypeMapping TypeName="CloudModel.ClassRoomsView">
+              <MappingFragment StoreEntitySet="ClassRoomsView">
+                <ScalarProperty Name="Classroom" ColumnName="Classroom" />
+                <ScalarProperty Name="Number_Classroom" ColumnName="Number_Classroom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuration">
+            <EntityTypeMapping TypeName="CloudModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsultUsers">
+            <EntityTypeMapping TypeName="CloudModel.ConsultUsers">
+              <MappingFragment StoreEntitySet="ConsultUsers">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code_Employee" ColumnName="Code_Employee" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeProfessor">
+            <EntityTypeMapping TypeName="CloudModel.EmployeProfessor">
+              <MappingFragment StoreEntitySet="EmployeProfessor">
+                <ScalarProperty Name="Code_Employee" ColumnName="Code_Employee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PanelUsers">
+            <EntityTypeMapping TypeName="CloudModel.PanelUsers">
+              <MappingFragment StoreEntitySet="PanelUsers">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professor_Subjects_Assigned">
+            <EntityTypeMapping TypeName="CloudModel.Professor_Subjects_Assigned">
+              <MappingFragment StoreEntitySet="Professor_Subjects_Assigned">
+                <ScalarProperty Name="Code_Employee" ColumnName="Code_Employee" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules_Assigneds">
+            <EntityTypeMapping TypeName="CloudModel.Schedules_Assigneds">
+              <MappingFragment StoreEntitySet="Schedules_Assigneds">
+                <ScalarProperty Name="ID_Schedule" ColumnName="ID_Schedule" />
+                <ScalarProperty Name="Code_Schedule" ColumnName="Code_Schedule" />
+                <ScalarProperty Name="HourStart" ColumnName="HourStart" />
+                <ScalarProperty Name="HourEnd" ColumnName="HourEnd" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code_Employee" ColumnName="Code_Employee" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Classroom_Assigned" ColumnName="Classroom_Assigned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsClassrooms">
+            <EntityTypeMapping TypeName="CloudModel.StudentsClassrooms">
+              <MappingFragment StoreEntitySet="StudentsClassrooms">
+                <ScalarProperty Name="Aula" ColumnName="Aula" />
+                <ScalarProperty Name="NameStudent" ColumnName="NameStudent" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Enrollment" ColumnName="Enrollment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UpdateConfiguration" FunctionName="CloudModel.Store.UpdateConfiguration" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

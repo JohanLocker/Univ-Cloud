@@ -1,0 +1,34 @@
+﻿@model UnivCloud_Logica.ViewModels.RegisterUser
+@using (Html.BeginForm("Crear", "Usuarios", FormMethod.Post, new { @autocomplete = "off" }))
+{
+    <div class="Form_Standard">
+        @Html.AntiForgeryToken()
+        <h4 class="title">Registro Usuario</h4>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.EditorFor(model => model.Employee, new { htmlAttributes = new { @class = "Input_Des cedula", @tabindex = "-1", @placeholder = "Codigo Empleado", @type = "number"} })
+            @Html.ValidationMessageFor(model => model.Employee, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "Input_Des", @tabindex = "-1", @placeholder = "Usuario", @type = "text" } })
+            @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "Input_Des", @tabindex = "-1", @placeholder = "Contraseña", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.EditorFor(model => model.Confirm, new { htmlAttributes = new { @class = "Input_Des", @tabindex = "-1", @placeholder = "Confirmar Contraseña", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.Confirm, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="Group-Des">
+            <button class="btn btn-dark" tabindex="-1">Register</button>
+            <a class="btn btn-dark button" id="Login" tabindex="-1">Log In</a>
+        </div>
+    </div>
+}
+

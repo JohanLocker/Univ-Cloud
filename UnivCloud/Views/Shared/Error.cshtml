@@ -1,0 +1,21 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    Layout = "~/Views/Shared/_Reference.cshtml";
+}
+<div class="card text-center">
+    <div class="card-header">
+        <h2 class="text-black-50">Error</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Error al procesar la solicitud</h5>
+        <h4 class="card-text">Error: @Model.Exception.Message</h4>
+        <div class="form-group">
+            @Html.ActionLink("Regresar", @Model.ActionName, @Model.ControllerName, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Ir al login", "LogIn", "Authentication", new { @class = "btn btn-primary" })
+        </div>
+
+    </div>
+    <div class="card-footer text-muted">
+        Intentalo una vez mas
+    </div>
+</div>

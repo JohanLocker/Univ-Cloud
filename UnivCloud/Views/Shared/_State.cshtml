@@ -1,0 +1,21 @@
+﻿@model StateValid
+
+@{
+    @Scripts.Render("~/Content/Notificaciones");
+    if (Model.States.HasValue)
+    {
+        if (Model.States.Value)
+        {
+            <script>
+                Exitoso();
+            </script>
+
+        }
+        else
+        {
+            <script>
+                Fallido();
+            </script>
+        }
+    }
+}

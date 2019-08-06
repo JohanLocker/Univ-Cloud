@@ -1,0 +1,82 @@
+﻿@model UnivCloud_Datos.BaseDatos.Configuration
+@{
+    ChangePassword change = new ChangePassword();
+}
+@using (Html.BeginForm())
+{
+    <h4>Configuracion</h4>
+    <hr />
+    <div class="row">
+        <div class="form-group col-md-12 text-center">
+            <img src="@Model.Image" id="ProfileDisplay" alt="Alternate Text" onclick="TriggerClick()" class="img-thumbnail"/>
+
+            @Html.Label("Imagenes", htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12">
+                <input type="file" name="Image" id="Image" style="display:none;cursor:pointer;" onchange="DisplayImage(this)"/>
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12 row">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control col-md-6", @type = "password", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <button href="#" class="btn btn-info col-md-4 offset-1" type="button" data-toggle="modal" data-target="#Confirmacion">Cambiar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-4">
+            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control telefono" } })
+                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-8">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+            <div class="col-md-12">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12 row">
+            <a href="@Url.Action("Index", "Home")" class="btn btn-info offset-1 col-md-3"><i class="fas fa-arrow-alt-circle-left"></i> Volver al Inicio</a>
+            <input type="submit" value="Guardar Cambios" id="Bod" class="btn btn-success w-100 m-auto col-md-3 offset-1" />
+        </div>
+    </div>
+}
+<script>
+    function TriggerClick() {
+        document.getElementById("Image").click();
+    }
+    function DisplayImage(e) {
+        if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector("#ProfileDisplay").setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+        }
+    }
+</script>

@@ -1,0 +1,110 @@
+﻿@model UnivCloud_Datos.BaseDatos.ConsultUsers
+
+
+    <div class="form-horizontal">
+        <h4>Consulta de usuario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @using (Html.BeginForm("Consult", "Users", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="form-group col-md-5">
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 Color-Black" })
+                    <div class="col-md-12">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <button class="btn btn-info col-md-3"><i class="fas fa-search"></i> Buscar</button>
+            </div>
+        }
+        <div class="row">
+
+            <div class="form-group col-md-12 text-center">
+                @if (Model != null)
+                {
+                    <img src="@Model.Image" id="ProfileDisplay" alt="Alternate Text" onclick="TriggerClick()" class="img-thumbnail" />
+                }
+                else
+                {
+                    <img src="~/Resources/Images/user.png" id="ProfileDisplay" alt="Alternate Text" onclick="TriggerClick()" class="img-thumbnail" />
+                }
+
+                @Html.Label("Imagenes", htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12">
+                    <input type="file" name="Image" id="Image" style="display:none;cursor:pointer;" onchange="DisplayImage(this)" />
+                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Code_Employee, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12 row">
+                    @Html.EditorFor(model => model.Code_Employee, new { htmlAttributes = new { @class = "form-control col-md-12", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Code_Employee, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12 row">
+                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control col-md-12", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Position, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-12 Color-Black" })
+                <div class="col-md-12">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            <div class="custom-control custom-switch">
+                @Html.CheckBoxFor(x => x.Status, new { @class = "custom-control-input", @readonly="readonly" })
+                <label class="custom-control-label Color-Black" for="Status">Activo</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 row">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-info offset-1 col-md-3"><i class="fas fa-arrow-alt-circle-left"></i> Volver al Inicio</a>
+            </div>
+        </div>
+
+
+
+
+        <!-- AQUIIIII  -->
+
+        <br><br>
+        <script>
+            function TriggerClick() {
+                document.getElementById("Image").click();
+            }
+            function DisplayImage(e) {
+                if (e.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.querySelector("#ProfileDisplay").setAttribute('src', e.target.result);
+                    }
+                    reader.readAsDataURL(e.files[0]);
+                }
+            }
+        </script>

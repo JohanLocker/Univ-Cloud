@@ -1,0 +1,138 @@
+﻿@{
+    UnivCloud_Datos.BaseDatos.PanelUsers Employee = (UnivCloud_Datos.BaseDatos.PanelUsers)Session["Employee"];
+}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio - Univ Cloud</title>
+        <link href="~/Resource/Images/logo.png" rel="shortcut icon" />
+        <link rel="icon" type="image/png" href="~/Resources/Images/logo.png" />
+
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body class="Bod">
+        <div class="Side_Navbar" id="Side">
+            <div class="Logo"></div>
+            <div class="Side_User">
+                @{
+                    var Image = "/Resources/Images/user.png";
+                    if (Employee.Image != null)
+                    {
+                        Image = Employee.Image;
+                    }
+                }
+                <img src="@Url.Content(Image)" alt="Imagen del Usuario" id="ProfileImage" class="Imagen-Usuario img-thumbnail" />
+                <h4 id="Name">@Employee.Name</h4> <!-- SE ALMACENARA EN UN WEB STORAGE-->
+                <h6 id="Charge"><i class="fas fa-award"></i> @Employee.Position</h6> <!-- SE ALMACENARA EN UN WEB STORAGE-->
+                <h6><i class="fas fa-user"></i> @Employee.Description</h6> <!-- SE ALMACENARA EN UN WEB STORAGE-->
+
+            </div>
+            <div class="Nav_Selects">
+                <div class="list">
+                    <a href="@Url.Action("Index", "Home")" class="Option"><i class="fas fa-home"></i>  Inicio</a>
+                </div>
+                <div class="list">
+                    <a href="#" class="Option"><i class="fas fa-users"></i>  Usuarios</a>
+                    <div class="Group_Nav_Selects">
+                        <a href="@Url.Action("Create", "Users")">Crear usuarios</a>
+                        <a href="@Url.Action("Consult", "Users")">Consultar Usuarios</a>
+                        <a href="@Url.Action("Activate", "Users")">Activar Usuarios</a>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="#" class="Option"><i class="fas fa-user-edit"></i> Actualizacion</a>
+                    <div class="Group_Nav_Selects">
+                        <a href="#">Usuarios</a>
+                        <a href="#">Estudiantes</a>
+                        <a href="#">Empleados</a>
+                    </div>
+                </div>
+                <div class="list">
+                    <a href="#" class="Option"><i class="fas fa-scroll"></i> Reportes</a>
+                    <div class="Group_Nav_Selects">
+                        <a href="">Usuarios</a>
+                        <a href="@Url.Action("Reporte", "Estudiantes")"><i class="fas fa-users"></i> Estudiantes</a>
+                        <a href="#">Empleados</a>
+                    </div>
+                </div>
+                @{
+                    if (Employee.Description == "Administrador")
+                    {
+                        <div class="list">
+                            <a href="#" class="Option"><i class="fas fa-tools"></i> Administracion</a>
+                            <div class="Group_Nav_Selects">
+                                <a href="@Url.Action("Consult", "Subjects")"><i class="fas fa-book"></i> Asignaturas</a>
+                                <a href="@Url.Action("Consult", "Students")"><i class="fas fa-users"></i> Estudiantes</a>
+                                <a href="@Url.Action("Consult", "Employees")"><i class="fas fa-user-tie"></i> Empleados</a>
+                                <a href="@Url.Action("Consult", "Tutores")"><i class="fas fa-user"></i> Tutores</a>
+                                <a href="@Url.Action("Create", "Schedules")"><i class="fas fa-clock"></i> Horarios</a>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="list">
+                    <a href="#" class="Option"> <i class="fas fa-coins"></i> Nomina</a>
+                    <div class="Group_Nav_Selects">
+                        <a href="#">Usuarios</a>
+                        <a href="#">Estudiantes</a>
+                        <a href="#">Empleados</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Main">
+            <div class="navbar_Main">
+                <img src="~/Resources/Images/menu.svg" alt="Menu" class="Icon" id="Menu" />
+                <div class="Btn_Users">
+                    <div class="list-icon">
+                        <img src="~/Resources/Images/message-circle.svg" alt="Alternate Text" class="Icon" />
+                        <div class="Group_Nav_List">
+                            <a href="#"><i class="fas fa-envelope"></i> Nuevos mensajes</a>
+                            <a href="#"><i class="fas fa-envelope-open"></i> Mensajes recibidos</a>
+                            <a href="#"><i class="fas fa-trash-alt"></i> Eliminar Mensajes</a>
+                        </div>
+                    </div>
+                    <div class="list-icon">
+                        <img src="~/Resources/Images/bell.svg" alt="Alternate Text" class="Icon" />
+                        <div class="Group_Nav_List">
+                            <a href="#"><i class="fas fa-bullseye"></i> Notificaciones Disponibles</a>
+                            <a href="#"><i class="fas fa-plus"></i> Novedades</a>
+                            <a href="#"><i class="fas fa-newspaper"></i> Noticias</a>
+                        </div>
+                    </div>
+                    <div class="list-icon">
+                        <img src="~/Resources/Images/settings.svg" alt="Alternate Text" class="Icon" />
+                        <div class="Group_Nav_List">
+                            <a href="#"><i class="fas fa-user-secret"></i> Privacidad</a>
+                            <a href="@Url.Action("Configuration", "Configuration", new { User = Employee.Username })"><i class="fas fa-user-cog"></i> Editar perfil</a>
+                            <a href="@Url.Action("LogOut", "Authentication")" id="Cerrar"><i class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container body-content">
+                @RenderBody()
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/Otros/jquery.mask.min.js"></script>
+        <script src="~/Scripts/Otros/Mask.js"></script>
+        <script>
+            //session end
+            var sessionTimeoutWarning = @Session.Timeout- 1;
+
+            var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+            setTimeout('SessionEnd()', sTimeout);
+
+            function SessionEnd() {
+                window.location = "/Authentication/LogOut";
+            }
+        </script>
+    </body>
+</html>

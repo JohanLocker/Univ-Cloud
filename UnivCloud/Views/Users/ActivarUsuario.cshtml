@@ -1,0 +1,13 @@
+﻿@model int?
+@{
+    Layout = "~/Views/Shared/_Reference.cshtml";
+}
+<h1 class="text-center text-50-black">Usuario Codigo @Html.Raw(Model)</h1>
+
+<div class="alert alert-success" role="alert">
+    <p class="text-center">
+        Su cuenta fue activada con exito, regrese al control de acceso para ingresar al sistema
+    </p>
+    <p>@Model.HasValue</p>
+</div>
+<a href="@Url.Action("Activar", "Empleados", new { Codigo = @Model})" class="btn btn-success">Activar Empleado</a>

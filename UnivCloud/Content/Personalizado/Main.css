@@ -1,0 +1,449 @@
+:root {
+    --Text: #EBFFEF;
+    --Bg-Dark: #3B403F;
+    --First: #1D2245;
+    --Second: #0D164F;
+    --Third: #3E4A94;
+    --Darking: #3B403F;
+    --Btn_Nav: #e9ecef;
+}
+
+.Bod{
+    min-width: 1349px;
+    max-width: 100%;
+}
+.Main {
+    transition: all .5s ease;
+    margin-left: 20%;
+}
+.Background_Standard {
+    background-image: url("/Resources/Images/Background_Image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.Background_Standard::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    background-color: rgba(0,0,0,.4);
+}
+.Content-Background{
+    z-index: 1;
+    display: block;
+}
+label {
+    color: var(--Text);
+    font: bold 16px verdana;
+}
+.Input_Des {
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 6px;
+    outline: none;
+    text-align: center;
+    background-color: rgba(255,255,255,0.2);
+    transition: all 0.4s ease;
+    border-radius: 6px;
+}
+.Input_Des_Error {
+    width: 100%;
+    color: white;
+    border: none;
+    padding: 6px;
+    outline: none;
+    text-align: center;
+    background-color: rgba(175, 5, 5, 0.2);
+    transition: all 0.4s ease;
+    border-radius: 6px;
+}
+.Input_Des:focus{
+    background-color: rgba(255,255,255,0.3);
+}
+.Form {
+    width: 50%;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-self: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow:hidden;
+    transition: all 1s ease;
+}
+.button{
+    border-radius: 15px;
+    width: 50%;
+    cursor: pointer;
+}
+.Group-Buttons{
+    display: flex;
+    align-items: center;
+}
+.form-group{
+    width: 60%;
+    margin: 20px auto;
+}
+::placeholder{
+    color: #f2f2f2;
+}
+.Group-Des{
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+     justify-content: center;
+}
+.Alert-Des {
+    width: 60%;
+    margin: auto;
+    background-color: red;
+    color: white;
+    font: normal 16px verdana;
+    background-color: #ff000066;
+    padding: 0px;
+    max-height: 0px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+.Exito {
+    background-color: #00ff4e66!important;
+}
+.Error {
+    background-color: #ff000066;
+}
+.Another{
+    font: lighter 14px verdana;
+    cursor: pointer;
+    align-self: flex-end;
+    margin: 5px;
+    text-align: right;
+}
+.Hide {
+    width: 100%;
+    height: 0px !important;
+    padding: 0px;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+.Show {
+    padding: 10px;
+    max-height: 120px;
+    transition: all 1s ease;
+}
+.form{
+    width: 100%;
+}
+.Color-Black{
+    color: black!important;
+    font: normal 16px verdana;
+}
+.Form_Standard {
+    width: 100%;
+    height: 470px;
+    overflow: hidden;
+    transition: all 1s ease;
+}
+.Form_Black {
+    background-color: #343A40;
+    color: white;
+}
+.Form_Standard_Univ {
+    width: 80%;
+    color: black!important;
+    min-height: 500px;
+}
+.Contenido-Central{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+/* <-- NAVBAR LAYOUT -- >*/
+.navbar_Main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: #f2f2f2;
+}
+.Nav_Options{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Btn_Users{
+    display:flex;
+    justify-content: center;
+}
+.Nav_Selects{
+    display:flex;flex-direction:column;
+    
+}
+.Nav_Selects a{
+    padding: 15px;
+    color:white;
+}
+.Option:focus ~ .Group_Nav_Selects {
+    max-height: 435px;
+    transition: all 2s ease;
+}
+.Nav_Selects a:hover{
+    text-decoration:none;
+    background-color: #11151dd9;
+}
+.Group_Nav_Selects {
+    max-height: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    width: 90%;
+    margin: auto;
+    color: black;
+    transition: all 1s ease;
+}
+.list{
+    padding: 10px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.Group_Nav_Selects a{
+    color: #191919;
+    padding: 10px;
+    text-align:center;
+}
+.Group_Nav_Selects a:hover{
+    text-decoration: none;
+    background-color: #d8c7c77a;
+}
+.list-icon{
+    width: 100%;
+    position: relative;
+    margin: auto 10px;
+}
+.Group_Nav_List{
+    position: absolute;
+    height: 0;
+    z-index:1;
+    top: 120%;
+    left: -320%;
+    width: 200px;
+    background-color: #f2f2f2;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0px 8px 8px;
+}
+.Group_Nav_List a {
+    font: normal 14px verdana;
+    color: #181818;
+    text-align: center;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+.Group_Nav_List a:hover{
+    text-decoration: none;
+    background-color: #f9f9f9;
+}
+.list-icon:hover .Group_Nav_List {
+    height: auto;
+    top: 100%;
+    transition: all 0.5s ease;
+}
+/*Icons bar*/
+.Icon_Bar {
+    display: flex;
+    flex-direction: column;
+    width: 45px;
+    height: 35px;
+    cursor: pointer;
+}
+.Icons {
+    width: 35px;
+    height: 7px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.4s;
+}
+.Icon {
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.Utilidades{
+    display:flex;
+    justify-content: space-around;
+}
+.modal-header .close{
+    width: auto!important;
+}
+.modal-body{
+    font: normal 18px verdana;
+}
+.Iconos-Utilidades {
+    font-size: 30px;
+    color: #181818;
+    cursor: pointer;
+}
+/*SIDE BAR*/
+.Side_Navbar {
+    width: 20%;
+    height: 100%;
+    background-color: #212529;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+}
+.Side_Navbar_Hide {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 0%;
+    overflow: hidden;
+    height: 1000px;
+    background-color: #211e1e;
+    transition: all .5s ease;
+}
+.Side_User{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    padding: 10px 0px;
+    color: white;
+}
+.Imagen-Usuario{
+    width: 60%!important;
+    height:150px;
+    border-radius: 50%;
+}
+/*BASICS ELEMENTS FOR USE*/
+.title {
+    margin: 40px auto;
+    text-align: center;
+}
+.button_Nav{
+    background-color: var(--Btn_Nav);
+    padding: 3px 12px;
+}
+button {
+    width: 50%;
+    color: var(--Text);
+    background-color: var(--Bg-Dark);
+    transition: all 1s ease;
+    border-radius: 16px!important;
+    margin: auto 10px;
+}
+.Logo{
+    background-image: url("/Resources/Images/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 105px;
+    min-height: 105px;
+    width: 40%;
+    margin: auto;
+}
+
+/*LOG IN*/ 
+span[class|="error"]{
+    transition: all 1s ease;
+    padding: 2px; 
+    color: yellow!important;
+}
+
+/*FORMULARIO ESTANDAR PARA REGISTROS*/
+.row{
+    margin:auto!important;
+}
+#ProfileDisplay{
+    display: block;
+    width: 20%;
+    height: 170px;
+    margin: 10px auto;
+    cursor:pointer;
+}
+/*Resources Basicos*/
+.Contenedor-Minimo{
+    min-height: 450px;
+}
+textarea{
+    resize: none;
+}
+.Boton-Collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Cuerpo-Collapse-Inactivo {
+    max-height: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    width: 90%;
+    margin: auto;
+    color: black;
+    transition: all 1s ease;
+}
+.Cuerpo-Collapse-Activo {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: #f2f2f2;
+    width: 90%;
+    margin: auto;
+    color: black;
+    max-height: 435px;
+    transition: all 2s ease;
+}
+/*PRUEBA*/
+.fileupload {
+    width: 50%;
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+}
+.fileupload:hover
+{
+    opacity:0.5;
+    cursor: pointer;
+}
+.fileupload .Imagen-Usuario::after{
+    content: "Subir imagen";
+}
+    .fileupload input {
+        position: absolute;
+        top: 0;
+        right: 0; /* not left, because only the right part of the input seems to
+                 be clickable in some browser I can't remember */
+        cursor: pointer;
+        opacity: 0.0;
+        filter: alpha(opacity=0); /* and all the other old opacity stuff you
+                                 want to support */
+        font-size: 300px; /* wtf, but apparently the most reliable way to make
+                         a large part of the input clickable in most browsers */
+        height: 200px;
+    }
